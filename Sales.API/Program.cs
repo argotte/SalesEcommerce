@@ -22,4 +22,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+//el UseCors es para permitir que cualquier metodo o externo pueda usarlo
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true)
+    .AllowCredentials());
+
 app.Run();
