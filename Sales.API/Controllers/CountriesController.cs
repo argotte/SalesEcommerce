@@ -72,7 +72,7 @@ namespace Sales.API.Controllers
             }
             _context.Countries.Remove(country);
             await _context.SaveChangesAsync();
-            return NoContent(); //
+            return NoContent(); //testing
         }
     }
 }
