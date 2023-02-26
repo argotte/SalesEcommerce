@@ -1,0 +1,48 @@
+﻿@typeparam Titem
+@if (MyList is null)
+{
+  @if (Loading is null)
+    {
+        <div class="align-items-center">
+            <img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700">
+        </div>
+    }
+    else
+    {
+        @Loading
+    }
+}
+else if(MyList.Count==0)
+{
+    @if (NoRecords is null)
+    {
+        <div class="align-items-center">
+            <p>No registers to show</p>
+        </div>
+    }
+    else
+    {
+        @NoRecords
+    }
+}
+else
+{
+    @Body
+}
+@code {
+    [Parameter] //RenderFragment es para psar un pedacito de codigo 
+    public RenderFragment? Loading { get; set; }
+
+    [Parameter]
+    public RenderFragment? NoRecords { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public RenderFragment Body { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public List<Titem> MyList { get; set; } = null!;
+
+
+}
