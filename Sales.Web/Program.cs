@@ -1,3 +1,4 @@
+using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Sales.Web;
@@ -14,5 +15,5 @@ builder.Services.AddScoped<IRepository, Repository>();
 //transient: lo inyecta solo una vez. 
 //singleton: crea la isntancia y luego la llama repetidas veces. No recomendado
 
-
+builder.Services.AddSweetAlert2();
 await builder.Build().RunAsync();
