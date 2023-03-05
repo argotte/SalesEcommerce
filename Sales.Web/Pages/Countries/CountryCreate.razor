@@ -19,8 +19,7 @@
             await sweetAlertService.FireAsync("Error", message);
             return;
         }
-        countryForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo("/countries");
+        Return();
     }
 
     private void Return()
