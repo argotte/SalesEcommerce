@@ -67,7 +67,9 @@
         var responseHttp = await repository.Delete<Country>($"/api/countries/{id}");
         if (responseHttp.Error)
         {
-
+            var message = await responseHttp.GetErrorMessageAsync();
+            await sweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
+            return;
         }
         await LoadAsync();
     }
