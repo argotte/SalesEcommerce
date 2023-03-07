@@ -40,25 +40,63 @@ namespace Sales.API.Controllers
         [HttpPost]
         public async Task<ActionResult> PostAsync(Country country)
         {
-            //actionresult es una respuesta de http
-            _context.Countries.Add(country);
+            try
+            {
+                //actionresult es una respuesta de http
+                _context.Countries.Add(country);
 
-            //podria escribir solo _context.Add(country) porque sabe que country es de tipo Countries pero lo hago para guiarme, en el futuro it wont be like this
+                //podria escribir solo _context.Add(country) porque sabe que country es de tipo Countries pero lo hago para guiarme, en el futuro it wont be like this
 
-            await _context.SaveChangesAsync();
-            return Ok(country);
+                await _context.SaveChangesAsync();
+                return Ok(country);
+            }
+            catch (DbUpdateException db)
+            {
+                if (db.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("There is already a country with that name");
+                }
+                return BadRequest(db.Message);
+            }
+            catch (Exception e) 
+            {
+                if (e.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("There is already a country with that name");
+                }
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut]
         public async Task<ActionResult> PutAsync(Country country)
         {
-            //actionresult es una respuesta de http
-            _context.Countries.Update(country);
+            try
+            {
+                //actionresult es una respuesta de http
+                _context.Countries.Update(country);
 
-            //podria escribir solo _context.Update(country) porque sabe que country es de tipo Countries pero lo hago para guiarme, en el futuro it wont be like this
+                //podria escribir solo _context.Update(country) porque sabe que country es de tipo Countries pero lo hago para guiarme, en el futuro it wont be like this
 
-            await _context.SaveChangesAsync();
-            return Ok(country);
+                await _context.SaveChangesAsync();
+                return Ok(country);
+            }
+            catch (DbUpdateException db)
+            {
+                if (db.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("There is already a country with that name");
+                }
+                return BadRequest(db.Message);
+            }
+            catch (Exception e)
+            {
+                if (e.InnerException!.Message.Contains("duplicate"))
+                {
+                    return BadRequest("There is already a country with that name");
+                }
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id:int}")]
