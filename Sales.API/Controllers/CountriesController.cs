@@ -27,7 +27,7 @@ namespace Sales.API.Controllers
         public async Task<IActionResult> GetAsync(int id)
         {
             //return ok es q trae 1 json
-            var country = await _context.Countries.FirstOrDefaultAsync(p => p.ID == id);
+            var country = await _context.Countries.FirstOrDefaultAsync(p => p.Id == id);
             if (country == null)
             {
                 return NotFound();
@@ -103,7 +103,7 @@ namespace Sales.API.Controllers
         public async Task<IActionResult> DeleteAsync(int id)
         {
             //return ok es q trae 1 json
-            var country = await _context.Countries.FirstOrDefaultAsync(p => p.ID == id);
+            var country = await _context.Countries.FirstOrDefaultAsync(p => p.Id == id);
             if (country == null)
             {
                 return NotFound();

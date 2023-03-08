@@ -20,8 +20,8 @@
                     {
                         <tr>
                             <td>
-                                <a class="btn btn-warning" href="/countries/edit/@country.ID">Edit</a>
-                            <button class="btn btn-danger" @onclick=@(()=>DeleteAsync(country.ID)) href="/countries/edit/@country.ID">Delete</button>
+                                <a class="btn btn-warning" href="/countries/edit/@country.Id">Edit</a>
+                            <button class="btn btn-danger" @onclick=@(()=>DeleteAsync(country.Id)) href="/countries/edit/@country.Id">Delete</button>
                             </td>
                             <td>
                                 @country.Name
